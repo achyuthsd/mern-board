@@ -108,7 +108,7 @@ try {
             ))}
           </div>
         ):(
-          <div className="text-gray-500 mb-[150px]">Click <span className="text-gray-800 font-bold">"+Add Note"</span> to Get Started</div>
+          <div className="text-gray-500 font-mono mb-[150px]">Click <span className="text-gray-800 font-bold">"+Add Note"</span> to Get Started</div>
         )}
       </div>
       <Footer/>
