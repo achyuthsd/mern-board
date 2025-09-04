@@ -1,9 +1,9 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import { useState } from 'react'
-import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import api from "../lib/axios.js"
 
 
 const Createpage = () => {
@@ -22,7 +22,7 @@ const handlesubmit = async (e)=>{
 else{
   try {
     
-    await axios.post("http://localhost:5001/api/notes/",{
+    await api.post("/notes/",{
       title:`${title}`,
       content:`${content}`,
     })

@@ -1,13 +1,12 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router";
 import { Trash2,Pencil } from 'lucide-react';
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router";
 import Footer from "../components/Footer";
-
+import api from "../lib/axios.js"
 
 const Homepage = () => {
   const [notes, setnotes] = useState([]);
@@ -16,7 +15,7 @@ const navigate = useNavigate()
   const fetchNotes = async () => {
     try {
       setloading(true);
-      const res = await axios.get("http://localhost:5001/api/notes");
+      const res = await api.get("/notes");
       console.table(res.data);
       setnotes(res.data);
     } catch (error) {
@@ -32,7 +31,7 @@ e.preventDefault() //prevent navigation when clicking the whole div
 if(!window.confirm('Do you want to delete this note?')){return}
 
 try {
-  await axios.delete(`http://localhost:5001/api/notes/${id}`)
+  await api.delete(`/notes/${id}`)
   toast.success('Deleted successfully!',{style:{fontFamily:'monospace'}})
   navigate(0)
 } catch (error) {

@@ -1,10 +1,10 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import { useState ,useEffect} from 'react'
-import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
+import api from "../lib/axios.js"
 
 const Notepage = () => {
 
@@ -19,7 +19,7 @@ const { id } = useParams()
 const fetchDetail = async () =>{
   try {
     setloading(true)
-  const res = await axios.get(`http://localhost:5001/api/notes/${id}`)
+  const res = await api.get(`/notes/${id}`)
 
   settitle(res.data.title)
   setcontent(res.data.content)
@@ -50,7 +50,7 @@ const handleupdate = async (e)=>{
 else{
   try {
     
-    await axios.put(`http://localhost:5001/api/notes/${id}`,{
+    await api.put(`/notes/${id}`,{
       title:`${title}`,
       content:`${content}`,
     })
