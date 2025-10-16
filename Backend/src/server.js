@@ -19,7 +19,7 @@ app.use(express.json()) //middleware add before routes (to use req.body)
 
 
 
-app.use(rateLimiter)
+
 
 app.use((req,res,next)=>{
     console.log(`meth:${req.method}, req:${req.url}`)
